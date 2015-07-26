@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+  echo "usage: $0 folder"
+  exit 1
+fi
+
+package=$1
+
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+
+if git ls-tree -d --name-only HEAD | grep -Eq "^${package}$"; then
+  git rm -r ${package}/
+  git commit -o ${package}/ -m "Remove '${package}' folder to replace it with an AUR subtree"
+  git subtree add -P "${package}" aur:${package}.git -m "Import AUR package '${package}' as subtree" master
+else
+  echo "\"${package}\" is not a comitted folder."
+fi
+
+echo ""
