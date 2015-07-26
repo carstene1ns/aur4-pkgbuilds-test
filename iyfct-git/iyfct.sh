@@ -1,1 +1,0 @@
-../iyfct/iyfct.sh
