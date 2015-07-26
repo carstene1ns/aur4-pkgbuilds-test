@@ -1,1 +1,0 @@
-../yamagi-quake2-ctf/yamagi-quake2-ctf.sh
