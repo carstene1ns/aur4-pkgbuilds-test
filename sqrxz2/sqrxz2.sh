@@ -1,1 +1,0 @@
-../giana/giana.sh
